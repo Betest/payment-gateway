@@ -1,0 +1,20 @@
+{
+  "name": "payment-gateway",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.mjs",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Betest/payment-gateway.git"
+  },
+  "author": "betest",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Betest/payment-gateway/issues"
+  },
+  "homepage": "https://github.com/Betest/payment-gateway#readme"
+}
