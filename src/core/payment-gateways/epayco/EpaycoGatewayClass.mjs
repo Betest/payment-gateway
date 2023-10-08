@@ -112,6 +112,6 @@ class EpaycoGatewayClass extends PaymentGatewayClass {
 
     // #handlerPaymentFailed(data) {
     // };
-}
+};
 
 export default EpaycoGatewayClass;
