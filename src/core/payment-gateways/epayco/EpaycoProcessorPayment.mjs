@@ -6,7 +6,7 @@
 // let onResponseHandled = false;
 // let subscription;
 
-const EpaycoProcessorPayment = (publicKey='c548c4b29f1c630212c2c4615b892a73', lang='ES') => {
+const EpaycoProcessorPayment = (publicKey='c548c4b29f1c630212c2c4615b892a73', lang='ES', test=true) => {
 
   // Cargar script ePayco
   const script = document.createElement('script');
@@ -17,7 +17,7 @@ const EpaycoProcessorPayment = (publicKey='c548c4b29f1c630212c2c4615b892a73', la
     window.ePayco.checkout.configure({
       key: publicKey,
       lang,
-      test: true
+      test: test
     });
   };
 
