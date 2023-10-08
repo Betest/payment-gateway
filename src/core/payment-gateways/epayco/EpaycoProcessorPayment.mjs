@@ -7,8 +7,6 @@
 // let subscription;
 
 const EpaycoProcessorPayment = (publicKey='c548c4b29f1c630212c2c4615b892a73', lang='ES') => {
-  const publicKey = publicKey;
-  const lang = lang; // Opcional: idioma pasarela de pagos
 
   // Cargar script ePayco
   const script = document.createElement('script');

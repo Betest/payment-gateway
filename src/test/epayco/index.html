@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>prueba</p>
+    <button id="openButton">abrir</button>
+</body>
+<script type="module">
+    import EpaycoGatewayClass from './../../core/payment-gateways/epayco/EpaycoGatewayClass.mjs';
+    import { createPaymentGateway } from './../../../src/index.mjs';
+
+    export const handlerPayment = async () => {
+        const request = {
+            //Parametros compra (obligatorio)
+            name: "Zapatos el buen caminar",
+            description: "Compra prueba",
+            bill: '999000111',
+            badge: "cop",
+            // total compra
+            quantity: 21500,
+            // base compra
+            baseRate: 20000,
+            // iva
+            rate: 1500,
+            //Onpage="false" - Standard="true"
+            external: "false",
+    
+            //Atributos opcionales
+            // extra1: 1,
+            // extra2: 0, // cupon de descuento 
+            extra3: "extra3",
+            response: "http://google.com", // url redireccion al finalizar pago en cualquier estado
+    
+            //Atributos cliente
+            fullName: "Juan camilo torres",
+            address: "prueba",
+            typeDoc: "cc",
+            cellphone: "3041232211",
+            docNumber: "1046222111",
+        };
+    
+        const epaycoProcessorPaymentStrategy = createPaymentGateway(EpaycoGatewayClass, request)
+        await epaycoProcessorPaymentStrategy.initCheckout();
+    };
+    // Agrega un evento de clic al botón
+    const openButton = document.getElementById("openButton");
+    openButton.addEventListener("click", handlerPayment);
+    EpaycoGatewayClass.configurePayment();
+</script>
+</html>

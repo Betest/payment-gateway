@@ -1,10 +1,12 @@
-import PaymentGatewayClass from "../../PaymentGatewayClass";
+
+import PaymentGatewayClass from "../../PaymentGatewayClass.mjs";
 import EpaycoProcessorPayment from "./EpaycoProcessorPayment.mjs";
 
 class EpaycoGatewayClass extends PaymentGatewayClass {
 
     constructor(requestData) {
-        this.data = Map({
+        super();
+        this.data = {
             //Parametros(obligatorios)
             name: requestData?.name,
             description: requestData?.description,
@@ -28,7 +30,7 @@ class EpaycoGatewayClass extends PaymentGatewayClass {
             mobilephone_billing: requestData?.cellphone,
             number_doc_billing: requestData?.docNumber,
             email: requestData?.receptor_email,
-        });
+        };
 
         if (EpaycoGatewayClass.instance && (requestData?.bill && this.#getInvoice() === requestData?.bill)) {
             return EpaycoGatewayClass.instance;
@@ -37,12 +39,14 @@ class EpaycoGatewayClass extends PaymentGatewayClass {
         EpaycoGatewayClass.instance = this;
     };
 
+    getInstance = () => this.vendor
+
     #getInfo() {
-        return this.data.toJS();
+        return this.data;
     };
 
     #getInvoice() {
-        return this.data.get('invoice');
+        return this.data?.invoice;
     };
 
     static #configure() {
@@ -110,9 +114,4 @@ class EpaycoGatewayClass extends PaymentGatewayClass {
     // };
 }
 
-export default PaymentGatewayClass;
-
-
-
-
-
+export default EpaycoGatewayClass;
